@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <item name="dj_fl_ddls" type="id"/>
+    <item name="pw_et_tpsc" type="id"/>
+    <item name="pw_btn_copy" type="id"/>
+    <item name="pw_btn_trans" type="id"/>
+    <item name="ds_web_ds" type="id"/>
+    <item name="ds_img_image" type="id"/>
+    <item name="ds_tv_bt" type="id"/>
+    <item name="ds_tv_nr" type="id"/>
+    <item name="dsjx_tv_nr" type="id"/>
+    <item name="dj_fl_dsjs" type="id"/>
+    <item name="bottom_panel" type="id"/>
+    <item name="btn_previous" type="id"/>
+    <item name="btn_mode" type="id"/>
+    <item name="txt_label" type="id"/>
+    <item name="btn_favor" type="id"/>
+    <item name="btn_next" type="id"/>
+    <item name="main_panel" type="id"/>
+    <item name="news_imageview" type="id"/>
+    <item name="news_title" type="id"/>
+    <item name="listview" type="id"/>
+    <item name="question_panel_ad_top_panel" type="id">false</item>
+    <item name="question_panel_top_webview" type="id">false</item>
+    <item name="btn_close_ad" type="id">false</item>
+    <item name="content_bg" type="id">false</item>
+    <item name="question_multi_label" type="id">false</item>
+    <item name="question_content" type="id">false</item>
+    <item name="question_image" type="id">false</item>
+    <item name="radio_group" type="id">false</item>
+    <item name="radio1" type="id">false</item>
+    <item name="radio2" type="id">false</item>
+    <item name="radio3" type="id">false</item>
+    <item name="radio4" type="id">false</item>
+    <item name="question_finished_btn" type="id">false</item>
+    <item name="explain_detail" type="id">false</item>
+    <item name="explain_stars" type="id">false</item>
+    <item name="question_star1" type="id">false</item>
+    <item name="question_star2" type="id">false</item>
+    <item name="question_star3" type="id">false</item>
+    <item name="question_star4" type="id">false</item>
+    <item name="question_star5" type="id">false</item>
+    <item name="question_statistic" type="id">false</item>
+    <item name="explain_real_panel" type="id">false</item>
+    <item name="question_panel_bottom_webview" type="id">false</item>
+    <item name="edit_record_hide_panel" type="id">false</item>
+    <item name="dj_fl_mks" type="id">false</item>
+    <item name="dj_fl_mg" type="id">false</item>
+    <item name="practice_title" type="id">false</item>
+    <item name="practice_answer" type="id">false</item>
+    <item name="webview" type="id">false</item>
+    <item name="news_content" type="id">false</item>
+
+</resources>
