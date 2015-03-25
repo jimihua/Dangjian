@@ -21,6 +21,16 @@
     <item name="news_imageview" type="id"/>
     <item name="news_title" type="id"/>
     <item name="listview" type="id"/>
+    <item name="title" type="id"/>
+    <item name="xlistview_footer_content" type="id"></item>
+    <item name="xlistview_footer_progressbar" type="id"></item>
+    <item name="xlistview_footer_hint_textview" type="id"></item>
+    <item name="xlistview_header_content" type="id"></item>
+    <item name="xlistview_header_text" type="id"></item>
+    <item name="xlistview_header_hint_textview" type="id"></item>
+    <item name="xlistview_header_time" type="id"></item>
+    <item name="xlistview_header_arrow" type="id"></item>
+    <item name="xlistview_header_progressbar" type="id"></item>
     <item name="question_panel_ad_top_panel" type="id">false</item>
     <item name="question_panel_top_webview" type="id">false</item>
     <item name="btn_close_ad" type="id">false</item>
@@ -51,5 +61,6 @@
     <item name="practice_answer" type="id">false</item>
     <item name="webview" type="id">false</item>
     <item name="news_content" type="id">false</item>
+    <item name="news_des" type="id">false</item>
 
 </resources>
