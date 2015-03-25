@@ -63,6 +63,8 @@
         <activity android:name="com.star.dangjian.Practice" />
         <activity android:name="com.star.dangjian.NewsDetailActivity" />
         <activity android:name="com.star.dangjian.NewsDetailActivity_v2" />
+        <activity android:name="com.star.dangjian.SchoolNewsActivity" />
+        <activity android:name="com.star.dangjian.SchoolNewsDetail" />
 
         <receiver
             android:name="com.star.broadcast.BootReceiver"
