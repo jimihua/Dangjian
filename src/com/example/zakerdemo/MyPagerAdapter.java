@@ -133,7 +133,7 @@ public class MyPagerAdapter extends PagerAdapter {
 					MyUtil.JumpPages(activity, Practice.class,"practice","makesi");	
 					break;
 				case 3:
-					MyUtil.JumpPages(activity, Practice.class,"practice","dangzhang");	
+						
 					break;
 				case 4:
 					

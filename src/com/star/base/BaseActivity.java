@@ -4,6 +4,8 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.jsoup.nodes.Document;
+
 import net.tsz.afinal.FinalActivity;
 import android.app.ProgressDialog;
 import android.content.BroadcastReceiver;
@@ -31,6 +33,7 @@ public class BaseActivity<T> extends FinalActivity {
 	protected ProgressDialog mProgressDialog = null;
 	protected List<T> mDatas = new ArrayList<T>();
 	protected CommonAdapter mAdapter;
+	protected Document doc;
 	BroadcastReceiver connectionReceiver = new BroadcastReceiver() {
 		public void onReceive(Context paramAnonymousContext, Intent paramAnonymousIntent) {
 			ConnectivityManager localConnectivityManager = (ConnectivityManager) BaseActivity.this.getSystemService("connectivity");

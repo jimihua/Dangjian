@@ -22,6 +22,19 @@ package com.star.model;
  */
 public class News {
 
+	private String title;
+	private String imgsrc;
+	private String link;
+	private String des;
+
+	public String getDes() {
+		return des;
+	}
+
+	public void setDes(String des) {
+		this.des = des;
+	}
+
 	public String getTitle() {
 		return title;
 	}
@@ -46,7 +59,4 @@ public class News {
 		this.link = link;
 	}
 
-	private String title;
-	private String imgsrc;
-	private String link;
 }
