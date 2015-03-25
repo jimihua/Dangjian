@@ -62,5 +62,8 @@
     <item name="webview" type="id">false</item>
     <item name="news_content" type="id">false</item>
     <item name="news_des" type="id">false</item>
+    <item name="date" type="id">false</item>
+    <item name="author" type="id">false</item>
+    <item name="deptname" type="id">false</item>
 
 </resources>

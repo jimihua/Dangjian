@@ -11,6 +11,11 @@ public class CFinal extends FinalHttp {
 
 	public static final FinalHttp fh = new FinalHttp();
 	
+	public static FinalHttp getFh(String charSet) {
+		fh.configCharset(charSet);
+		return fh;
+	}
+
 	private static String[] putMsg;
 
 	public static void setPutMsg(String[] putMsg) {
@@ -18,6 +23,7 @@ public class CFinal extends FinalHttp {
 		CFinal.putMsg = putMsg;
 	}
 
+	
 	public static void setFromClasses(Class[] classes) {
 		// TODO Auto-generated method stub
 	}

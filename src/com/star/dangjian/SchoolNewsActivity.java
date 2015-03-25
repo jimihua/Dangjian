@@ -29,7 +29,9 @@ import com.google.gson.reflect.TypeToken;
 import com.star.base.BaseActivity;
 import com.star.common.CFinal;
 import com.star.common.Urls;
+import com.star.list.SchoolNewsAdapter;
 import com.star.model.News;
+import com.star.tools.MyUtil;
 import com.star.view.XListView;
 import com.star.view.XListView.IXListViewListener;
 
@@ -45,9 +47,11 @@ public class SchoolNewsActivity extends BaseActivity<News> implements IXListView
 
 	private Handler mHandler;
 
-	public void setContentView(int layoutResID) {
+	@Override
+	protected void onCreate(Bundle bundle) {
 		// TODO Auto-generated method stub
-		super.setContentView(R.layout.activity_schoolnews);
+		super.onCreate(bundle);
+		setContentView(R.layout.activity_schoolnews);
 		mHandler = new Handler();
 		this.mListView.setPullLoadEnable(true);
 		geneItems();
@@ -55,6 +59,7 @@ public class SchoolNewsActivity extends BaseActivity<News> implements IXListView
 		this.mListView.setDividerHeight(0);
 		this.mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 			public void onItemClick(AdapterView<?> paramAnonymousAdapterView, View view, int position, long paramAnonymousLong) {
+				MyUtil.JumpPages(mContext, SchoolNewsDetail.class, "url", mDatas.get(position - 1).getLink());
 
 			}
 		});
@@ -64,7 +69,7 @@ public class SchoolNewsActivity extends BaseActivity<News> implements IXListView
 		this.mProgressDialog = ProgressDialog.show(this, "请稍后", "正在努力加载中...", true);
 		this.mProgressDialog.setCancelable(true);
 
-		CFinal.fh.post(Urls.SCHOOLNEWS, new AjaxCallBack() {
+		CFinal.getFh("GBK").post(Urls.SCHOOLNEWS, new AjaxCallBack() {
 			public void onFailure(Throwable throwable, int param, String string) {
 				super.onFailure(throwable, param, string);
 				mProgressDialog.dismiss();
@@ -78,11 +83,18 @@ public class SchoolNewsActivity extends BaseActivity<News> implements IXListView
 					News news = new News();
 					news.setDes(element.text());
 					mDatas.add(news);
+
 				}
-				Elements as = doc.select("a:not(.mypager,.green,[title],[href=default.aspx]");
+
+				Elements as = doc.select("a:not(.mypager,.green,[title],[href=default.aspx],[disabled=true])");
 				for (int i = 0; i < as.size(); i++) {
+
 					mDatas.get(i).setTitle(as.get(i).text());
+					mDatas.get(i).setLink("http://www.zjnu.edu.cn/news/common/"+as.get(i).attr("href"));
+					
 				}
+				mAdapter = new SchoolNewsAdapter(mContext, mDatas, R.layout.schollnews_item);
+				mListView.setAdapter(mAdapter);
 				mProgressDialog.dismiss();
 			}
 		});
@@ -97,7 +109,7 @@ public class SchoolNewsActivity extends BaseActivity<News> implements IXListView
 	public void onLoadMore() {
 		this.mHandler.postDelayed(new Runnable() {
 			public void run() {
-
+				onLoad();
 			}
 		}, 100L);
 	}
@@ -105,7 +117,7 @@ public class SchoolNewsActivity extends BaseActivity<News> implements IXListView
 	public void onRefresh() {
 		this.mHandler.postDelayed(new Runnable() {
 			public void run() {
-
+				onLoad();
 			}
 		}, 100L);
 	}
