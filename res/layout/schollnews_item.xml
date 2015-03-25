@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="5dip" >
+
+    <ImageView
+        android:id="@id/news_imageview"
+        android:layout_width="100dp"
+        android:layout_height="60dp" 
+        android:src="@drawable/news"/>
+
+    <TextView
+        android:id="@id/news_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/news_imageview"
+        android:text="3Q大战宣判: 腾讯获赔500万"
+        android:textColor="@android:color/black"
+        android:textSize="14sp" />
+
+    <TextView
+        android:id="@id/news_des"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dip"
+        android:layout_below="@id/news_title"
+        android:layout_toRightOf="@id/news_imageview"
+        android:text="3Q大战宣判: 腾讯获赔500万爱上大声地阿斯顿奥数打算打算的"
+        android:textColor="@android:color/darker_gray"
+        android:textSize="12sp" />
+
+</RelativeLayout>
