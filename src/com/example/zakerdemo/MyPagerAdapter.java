@@ -27,6 +27,7 @@ import com.star.dangjian.Dangshi;
 import com.star.dangjian.NewsActivity;
 import com.star.dangjian.Practice;
 import com.star.dangjian.SchoolNewsActivity;
+import com.star.dangjian.XiDaDaActivity;
 import com.star.tools.MyUtil;
 
 /**
@@ -136,7 +137,7 @@ public class MyPagerAdapter extends PagerAdapter {
 					MyUtil.JumpPages(activity, MainGameActivity.class, "2048");
 					break;
 				case 5:
-					MyUtil.JumpPages(activity, DangZhang.class, "2048");
+					MyUtil.JumpPages(activity, XiDaDaActivity.class, "2048");
 					break;
 				default:
 					break;

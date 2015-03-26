@@ -3,6 +3,7 @@ package com.star.common;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
+import net.tsz.afinal.FinalDb;
 import net.tsz.afinal.FinalHttp;
 
 public class CFinal extends FinalHttp {
@@ -10,7 +11,7 @@ public class CFinal extends FinalHttp {
 	private static SharedPreferences sp;
 
 	public static final FinalHttp fh = new FinalHttp();
-	
+
 	public static FinalHttp getFh(String charSet) {
 		fh.configCharset(charSet);
 		return fh;
@@ -23,7 +24,11 @@ public class CFinal extends FinalHttp {
 		CFinal.putMsg = putMsg;
 	}
 
-	
+	public static FinalDb getFinalDb(Context mContext) {
+
+		return FinalDb.create(mContext, "dangjian.db",true);
+	}
+
 	public static void setFromClasses(Class[] classes) {
 		// TODO Auto-generated method stub
 	}

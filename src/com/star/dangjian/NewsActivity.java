@@ -58,7 +58,7 @@ public class NewsActivity extends BaseActivity<News> {
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 				// TODO Auto-generated method stub
-				MyUtil.JumpPages(mContext, NewsDetailActivity_v2.class, "url", mDatas.get(position).getLink());
+				MyUtil.JumpPages(mContext, NewsDetailActivity_v2.class, "url", mList.get(position).getLink());
 			}
 		});
 	}
@@ -89,9 +89,9 @@ public class NewsActivity extends BaseActivity<News> {
 					news.setImgsrc("http://cpc.people.com.cn/" + element.select("img").attr("src"));
 
 					news.setLink(element.select("a").attr("href"));
-					mDatas.add(news);
+					mList.add(news);
 				}
-				mAdapter = new NewsAdapter(mContext, mDatas, R.layout.listview_item);
+				mAdapter = new NewsAdapter(mContext, mList, R.layout.listview_item);
 				listView.setAdapter(mAdapter);
 			}
 		});

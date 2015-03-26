@@ -4,6 +4,17 @@
     android:layout_height="match_parent"
     android:orientation="vertical" >
 
+    <TextView
+        android:id="@id/title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#8B0000"
+        android:gravity="center_horizontal"
+        android:padding="8dip"
+        android:text="党的新闻"
+        android:textColor="@android:color/white"
+        android:textSize="22sp" />
+
     <ListView
         android:id="@id/listview"
         android:layout_width="match_parent"

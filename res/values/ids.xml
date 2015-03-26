@@ -43,6 +43,7 @@
     <item name="radio2" type="id">false</item>
     <item name="radio3" type="id">false</item>
     <item name="radio4" type="id">false</item>
+    <item name="viewpager" type="id">false</item>
     <item name="question_finished_btn" type="id">false</item>
     <item name="explain_detail" type="id">false</item>
     <item name="explain_stars" type="id">false</item>
@@ -65,5 +66,12 @@
     <item name="date" type="id">false</item>
     <item name="author" type="id">false</item>
     <item name="deptname" type="id">false</item>
+    <item name="viewGroup" type="id">false</item>
+    <item name="xdd_yulu" type="id">false</item>
+    <item name="xdd_fzyl" type="id">false</item>
+    <item name="xdd_jdzy" type="id">false</item>
+    <item name="word" type="id">false</item>
+    <item name="origin" type="id">false</item>
+    <item name="situation" type="id">false</item>
 
 </resources>

@@ -59,7 +59,7 @@ public class SchoolNewsActivity extends BaseActivity<News> implements IXListView
 		this.mListView.setDividerHeight(0);
 		this.mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 			public void onItemClick(AdapterView<?> paramAnonymousAdapterView, View view, int position, long paramAnonymousLong) {
-				MyUtil.JumpPages(mContext, SchoolNewsDetail.class, "url", mDatas.get(position - 1).getLink());
+				MyUtil.JumpPages(mContext, SchoolNewsDetail.class, "url", mList.get(position - 1).getLink());
 
 			}
 		});
@@ -82,18 +82,18 @@ public class SchoolNewsActivity extends BaseActivity<News> implements IXListView
 				for (Element element : texts) {
 					News news = new News();
 					news.setDes(element.text());
-					mDatas.add(news);
+					mList.add(news);
 
 				}
 
 				Elements as = doc.select("a:not(.mypager,.green,[title],[href=default.aspx],[disabled=true])");
 				for (int i = 0; i < as.size(); i++) {
 
-					mDatas.get(i).setTitle(as.get(i).text());
-					mDatas.get(i).setLink("http://www.zjnu.edu.cn/news/common/"+as.get(i).attr("href"));
-					
+					mList.get(i).setTitle(as.get(i).text());
+					mList.get(i).setLink("http://www.zjnu.edu.cn/news/common/" + as.get(i).attr("href"));
+
 				}
-				mAdapter = new SchoolNewsAdapter(mContext, mDatas, R.layout.schollnews_item);
+				mAdapter = new SchoolNewsAdapter(mContext, mList, R.layout.schollnews_item);
 				mListView.setAdapter(mAdapter);
 				mProgressDialog.dismiss();
 			}

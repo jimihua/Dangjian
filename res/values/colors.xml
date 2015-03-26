@@ -27,5 +27,6 @@
     <color name="statistics_right">#ff6fb41c</color>
     <color name="statistics_wrong">#fffe519f</color>
     <color name="explain_detail">#ffa67845</color>
+    <color name="yulu_back">#cd6667</color>
 
 </resources>

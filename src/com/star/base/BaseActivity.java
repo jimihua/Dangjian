@@ -31,7 +31,7 @@ public class BaseActivity<T> extends FinalActivity {
 	protected Gson gson;
 	protected boolean isFirst = true;
 	protected ProgressDialog mProgressDialog = null;
-	protected List<T> mDatas = new ArrayList<T>();
+	protected List<T> mList = new ArrayList<T>();
 	protected CommonAdapter mAdapter;
 	protected Document doc;
 	BroadcastReceiver connectionReceiver = new BroadcastReceiver() {
