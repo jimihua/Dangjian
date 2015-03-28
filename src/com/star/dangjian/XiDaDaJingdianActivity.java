@@ -21,6 +21,7 @@ import android.widget.ListView;
 import com.example.zakerdemo.R;
 import com.star.base.BaseActivity;
 import com.star.common.CFinal;
+import com.star.list.XddJingdianAdapter;
 import com.star.model.YuLu;
 
 /**
@@ -45,9 +46,12 @@ public class XiDaDaJingdianActivity extends BaseActivity<YuLu> {
 	}
 
 	private void getItems() {
-		mList = CFinal.getFinalDb(mContext).findAll(YuLu.class, "cls='习近平经典之语'");
-		for (YuLu yuLu : mList) {
-			System.out.println(yuLu.getOrigin());
+		
+		mList = CFinal.getFinalDb(mContext).findAllByWhere(YuLu.class, "cls='习大大经典之语'");
+		if (mList != null) {
+			mAdapter = new XddJingdianAdapter(mContext, mList, R.layout.item_xdd_jdyulu);
+			listView.setAdapter(mAdapter);
 		}
+
 	}
 }

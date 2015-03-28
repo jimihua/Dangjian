@@ -55,35 +55,13 @@
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:src="@drawable/dangjiandongtai" />
+                        android:src="@drawable/zixunliuyan" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10.0dip"
                         android:text="习大大语录"
-                        android:textColor="#ff000000"
-                        android:textSize="12.0sp" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@id/xdd_jdzy"
-                    android:layout_width="0.0dip"
-                    android:layout_height="fill_parent"
-                    android:layout_weight="1.0"
-                    android:gravity="center"
-                    android:orientation="vertical" >
-
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:src="@drawable/zhuantihuodong" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10.0dip"
-                        android:text="习大大经典之语"
                         android:textColor="#ff000000"
                         android:textSize="12.0sp" />
                 </LinearLayout>
@@ -149,7 +127,6 @@
                     android:layout_height="fill_parent"
                     android:layout_weight="1.0"
                     android:gravity="center"
-                    
                     android:orientation="vertical" >
 
                     <ImageView
@@ -162,27 +139,6 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10.0dip"
                         android:text="咨询留言"
-                        android:textColor="#ff000000"
-                        android:textSize="12.0sp" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="0.0dip"
-                    android:layout_height="fill_parent"
-                    android:layout_weight="1.0"
-                    android:gravity="center"
-                    android:orientation="vertical" >
-
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:src="@drawable/jicengjianshe" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10.0dip"
-                        android:text="基层建设"
                         android:textColor="#ff000000"
                         android:textSize="12.0sp" />
                 </LinearLayout>

@@ -81,7 +81,7 @@ public class XiDaDaActivity extends BaseActivity {
 	};
 
 	public void onClick(View view) {
-		System.out.println(view.getId());
+		
 		switch (view.getId()) {
 
 		case R.id.xdd_jdzy:
@@ -89,9 +89,11 @@ public class XiDaDaActivity extends BaseActivity {
 			MyUtil.JumpPages(mContext, XiDaDaJingdianActivity.class, "jingdian");
 			break;
 		case R.id.xdd_yulu:
+			MyUtil.JumpPages(mContext, XiDaDaYuluActivity.class, "jingdian");
 
 			break;
 		case R.id.xdd_fzyl:
+			MyUtil.JumpPages(mContext, XiDaDaFazhiYuluActivity.class, "jingdian");
 
 			break;
 		default:

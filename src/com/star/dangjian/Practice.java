@@ -14,6 +14,7 @@ import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import com.example.zakerdemo.R;
@@ -23,17 +24,17 @@ import com.star.utils.WarnUtils;
 
 public class Practice extends BaseActivity {
 
-	private ArrayList<HashMap<String, String>> questions=new ArrayList<HashMap<String,String>>();
+	private ArrayList<HashMap<String, String>> questions = new ArrayList<HashMap<String, String>>();
 	private SQLiteDatabase database;
 	private Context mContext;
 	private int questionnum = 1;
 	private String answer;
-	private String questionid="0";
+	private String questionid = "0";
 	private static int RIGHT = 1;
 	private static int WRONG = -1;
 	private static int NOTANS = 0;
-	private static String MAKESITABLE="makesi";
-	private String tablename="makesi";
+	private static String MAKESITABLE = "makesi";
+	private String tablename = "makesi";
 	@ViewInject(id = R.id.radio1)
 	RadioButton radio1;
 
@@ -61,37 +62,45 @@ public class Practice extends BaseActivity {
 
 	@ViewInject(id = R.id.question_content)
 	TextView question_content;
-	
+
 	@ViewInject(id = R.id.txt_label)
 	TextView txt_label;
-	
+
 	@ViewInject(id = R.id.btn_mode)
 	Button btn_mode;
-	
+
 	@ViewInject(id = R.id.practice_answer)
 	TextView practice_answer;
-	
+
 	@ViewInject(id = R.id.practice_title)
 	TextView practice_title;
+
+	@ViewInject(id = R.id.radioGroup)
+	RadioGroup radioGroup;
+
+	@ViewInject(id = R.id.makesi)
+	RadioButton makesi;
+	@ViewInject(id = R.id.maogai)
+	RadioButton maogai;
+
 	protected void onCreate(Bundle bundle) {
 		super.onCreate(bundle);
 		setContentView(R.layout.practice);
 		mContext = this;
-		tablename=getIntent().getStringExtra("practice");
+		tablename = getIntent().getStringExtra("practice");
 		initView();
 	}
 
 	private void initView() {
 		// TODO Auto-generated method stub
-		database = SQLiteDatabase.openOrCreateDatabase(DBManager.DB_PATH + "/"
-				+ DBManager.DB_NAME, null);
+		database = SQLiteDatabase.openOrCreateDatabase(DBManager.DB_PATH + "/" + DBManager.DB_NAME, null);
 
 		this.questions = getMaogai(mContext);
 		database.close();
 		clearRadio();
 		radio1.setChecked(true);
-		if(tablename.equals("dangzhang"))
-		{
+
+		if (tablename.equals("dangzhang")) {
 			radio4.setVisibility(View.GONE);
 		}
 		if (questions.get(0).get("questiontype").equals("0")) {
@@ -101,53 +110,48 @@ public class Practice extends BaseActivity {
 			radio3.setOnCheckedChangeListener(onsingleListener);
 			radio4.setOnCheckedChangeListener(onsingleListener);
 		}
-
 		refreshquestion();
+		questionnum = 1;
 		question_finished_btn.setOnClickListener(onClickListener);
 		btn_previous.setOnClickListener(onClickListener);
 		btn_next.setOnClickListener(onClickListener);
 		btn_mode.setOnClickListener(onClickListener);
+		makesi.setOnClickListener(onClickListener);
+		maogai.setOnClickListener(onClickListener);
 	}
 
 	private ArrayList<HashMap<String, String>> getMaogai(Context mContext) {
 		// TODO Auto-generated method stub
 		ArrayList<HashMap<String, String>> maps = new ArrayList<HashMap<String, String>>();
 
-		String sql = "select * from "+tablename+" where fal=0 LIMIT 150";
+		String sql = "select * from " + tablename + " where fal=0 LIMIT 150";
 		Cursor cursor = database.rawQuery(sql, null);
 		if (cursor != null) {
 			while (cursor.moveToNext()) {
 				HashMap<String, String> map = new HashMap<String, String>();
 				map.put("id", DBManager.getCursorString(cursor, "id"));
-				map.put("question",
-						DBManager.getCursorString(cursor, "question"));
-				map.put("optionone",
-						DBManager.getCursorString(cursor, "optionone"));
-				map.put("optiontwo",
-						DBManager.getCursorString(cursor, "optiontwo"));
-				map.put("optionthree",
-						DBManager.getCursorString(cursor, "optionthree"));
-				
-				answer=DBManager.getCursorString(cursor, "answer");
+				map.put("question", DBManager.getCursorString(cursor, "question"));
+				map.put("optionone", DBManager.getCursorString(cursor, "optionone"));
+				map.put("optiontwo", DBManager.getCursorString(cursor, "optiontwo"));
+				map.put("optionthree", DBManager.getCursorString(cursor, "optionthree"));
+
+				answer = DBManager.getCursorString(cursor, "answer");
 				if (tablename.equals("dangzhang")) {
 					if (answer.equals("A")) {
-						answer=map.get("optionone");
+						answer = map.get("optionone");
 					}
 					if (answer.equals("B")) {
-						answer=map.get("optiontwo");
+						answer = map.get("optiontwo");
 					}
 					if (answer.equals("C")) {
-						answer=map.get("optionthree");
+						answer = map.get("optionthree");
 					}
-				}
-				else {
-					map.put("optionfour",
-							DBManager.getCursorString(cursor, "optionfour"));
+				} else {
+					map.put("optionfour", DBManager.getCursorString(cursor, "optionfour"));
 				}
 				map.put("answer", answer);
 				map.put("fal", DBManager.getCursorString(cursor, "fal"));
-				map.put("questiontype",
-						DBManager.getCursorString(cursor, "questiontype"));
+				map.put("questiontype", DBManager.getCursorString(cursor, "questiontype"));
 				maps.add(map);
 			}
 			return maps;
@@ -157,10 +161,9 @@ public class Practice extends BaseActivity {
 
 	private OnCheckedChangeListener onsingleListener = new OnCheckedChangeListener() {
 
-		public void onCheckedChanged(CompoundButton buttonView,
-				boolean isChecked) {
+		public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
 			clearRadio();
-			
+
 			if (isChecked) {
 				buttonView.setChecked(isChecked);
 			}
@@ -177,17 +180,15 @@ public class Practice extends BaseActivity {
 	}
 
 	private boolean refreshquestion() {
-		if (questions.size()>=questionnum) {
-			question_content.setText(questionnum + "."
-					+ questions.get(questionnum - 1).get("question"));
+		if (questions.size() >= questionnum) {
+			question_content.setText(questionnum + "." + questions.get(questionnum - 1).get("question"));
 			radio1.setText("A." + questions.get(questionnum - 1).get("optionone"));
 			radio2.setText("B." + questions.get(questionnum - 1).get("optiontwo"));
-			radio3.setText("C."
-					+ questions.get(questionnum - 1).get("optionthree"));
+			radio3.setText("C." + questions.get(questionnum - 1).get("optionthree"));
 			radio4.setText("D." + questions.get(questionnum - 1).get("optionfour"));
 			answer = questions.get(questionnum - 1).get("answer");
-			txt_label.setText(questionnum+"/"+questions.size());
-			questionid=questions.get(questionnum - 1).get("id");
+			txt_label.setText(questionnum + "/" + questions.size());
+			questionid = questions.get(questionnum - 1).get("id");
 			practice_answer.setVisibility(View.INVISIBLE);
 			questionnum++;
 			return true;
@@ -209,7 +210,7 @@ public class Practice extends BaseActivity {
 					updatequestion(questionid);
 					if (!refreshquestion()) {
 						WarnUtils.toast(mContext, "题目已经答完,请等待更新");
-					}	
+					}
 				}
 				if (isRight == 0) {
 					WarnUtils.toast(mContext, "您还未选择答案，请选择答案");
@@ -219,9 +220,9 @@ public class Practice extends BaseActivity {
 				}
 				break;
 			case R.id.btn_previous:
-				questionnum=questionnum-2;
-				if (questionnum<1) {
-					questionnum=1;
+				questionnum = questionnum - 2;
+				if (questionnum < 1) {
+					questionnum = 1;
 				}
 				refreshquestion();
 				break;
@@ -229,9 +230,24 @@ public class Practice extends BaseActivity {
 				refreshquestion();
 				break;
 			case R.id.btn_mode:
-				
-				practice_answer.setText("答案是："+answer);
+
+				practice_answer.setText("答案是：" + answer);
 				practice_answer.setVisibility(View.VISIBLE);
+				break;
+			case R.id.makesi:
+
+				tablename = "makesi";
+				initView();
+				makesi.setChecked(true);
+				maogai.setChecked(false);
+				practice_title.setText("马克思哲学原理选择题练习");
+				break;
+			case R.id.maogai:
+				tablename = "dangzhang";
+				initView();
+				makesi.setChecked(false);
+				maogai.setChecked(true);
+				practice_title.setText("毛概选择题练习");
 				break;
 			default:
 				break;
@@ -243,9 +259,8 @@ public class Practice extends BaseActivity {
 		String chooseanswer;
 		if (radio1.isChecked()) {
 			chooseanswer = radio1.getText().toString();
-			chooseanswer = chooseanswer
-					.substring(chooseanswer.indexOf(".") + 1);
-			System.out.println(chooseanswer);
+			chooseanswer = chooseanswer.substring(chooseanswer.indexOf(".") + 1);
+			
 			if (chooseanswer.equals(answer)) {
 				return RIGHT;
 			} else {
@@ -255,8 +270,7 @@ public class Practice extends BaseActivity {
 
 		if (radio2.isChecked()) {
 			chooseanswer = radio2.getText().toString();
-			chooseanswer = chooseanswer
-					.substring(chooseanswer.indexOf(".") + 1);
+			chooseanswer = chooseanswer.substring(chooseanswer.indexOf(".") + 1);
 			System.out.println(chooseanswer);
 			if (chooseanswer.equals(answer)) {
 				return RIGHT;
@@ -266,8 +280,7 @@ public class Practice extends BaseActivity {
 		}
 		if (radio3.isChecked()) {
 			chooseanswer = radio3.getText().toString();
-			chooseanswer = chooseanswer
-					.substring(chooseanswer.indexOf(".") + 1);
+			chooseanswer = chooseanswer.substring(chooseanswer.indexOf(".") + 1);
 			System.out.println(chooseanswer);
 			if (chooseanswer.equals(answer)) {
 				return RIGHT;
@@ -277,8 +290,7 @@ public class Practice extends BaseActivity {
 		}
 		if (radio4.isChecked()) {
 			chooseanswer = radio4.getText().toString();
-			chooseanswer = chooseanswer
-					.substring(chooseanswer.indexOf(".") + 1);
+			chooseanswer = chooseanswer.substring(chooseanswer.indexOf(".") + 1);
 			System.out.println(chooseanswer);
 			if (chooseanswer.equals(answer)) {
 				return RIGHT;
@@ -289,17 +301,16 @@ public class Practice extends BaseActivity {
 		return NOTANS;
 
 	}
-	
+
 	/**
 	 * @param id
-	 *  更新题目状态
+	 *            更新题目状态
 	 */
-	private void updatequestion(String id){
-		database = SQLiteDatabase.openOrCreateDatabase(DBManager.DB_PATH + "/"
-				+ DBManager.DB_NAME, null);
-		String sql = "update "+tablename+ " set fal=1 where id="+id;
+	private void updatequestion(String id) {
+		database = SQLiteDatabase.openOrCreateDatabase(DBManager.DB_PATH + "/" + DBManager.DB_NAME, null);
+		String sql = "update " + tablename + " set fal=1 where id=" + id;
 		database.execSQL(sql);
 		database.close();
 	}
-	
+
 }

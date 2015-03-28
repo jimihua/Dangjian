@@ -73,5 +73,13 @@
     <item name="word" type="id">false</item>
     <item name="origin" type="id">false</item>
     <item name="situation" type="id">false</item>
+    <item name="news" type="id">false</item>
+    <item name="history" type="id">false</item>
+    <item name="exercise" type="id">false</item>
+    <item name="game" type="id">false</item>
+    <item name="makesi" type="id">false</item>
+    <item name="maogai" type="id">false</item>
+    <item name="xidada" type="id">false</item>
+    <item name="radioGroup" type="id">false</item>
 
 </resources>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background"
+    android:orientation="vertical" >
+
+    <ImageView
+        android:id="@id/exercise"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="46dp"
+        android:layout_marginLeft="17dp"
+        android:layout_toRightOf="@id/game"
+        android:src="@drawable/homepage_item_vip_out" />
+
+    <ImageView
+        android:id="@id/xidada"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/exercise"
+        android:layout_alignParentLeft="true"
+        android:layout_marginBottom="54dp"
+        android:layout_marginLeft="28dp"
+        android:src="@drawable/homepage_item_pintu_out" />
+
+    <ImageView
+        android:id="@id/news"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/exercise"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="39dp"
+        android:src="@drawable/homepage_item_paizhao_out" />
+
+    <ImageView
+        android:id="@id/game"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/exercise"
+        android:layout_alignLeft="@id/xidada"
+        android:layout_marginBottom="37dp"
+        android:layout_marginLeft="67dp"
+        android:src="@drawable/homepage_item_zhuangshi_out" />
+
+    <ImageView
+        android:id="@id/history"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/xidada"
+        android:layout_alignLeft="@id/xidada"
+        android:layout_marginBottom="30dp"
+        android:src="@drawable/homepage_item_meiyan_out" />
+
+    <ImageView
+        android:layout_width="160dip"
+        android:layout_height="80dip"
+        android:layout_above="@id/history"
+        android:layout_alignLeft="@id/history"
+        android:src="@drawable/longzjnu" />
+
+</RelativeLayout>

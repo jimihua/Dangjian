@@ -89,7 +89,7 @@ public class MyPagerAdapter extends PagerAdapter {
 			@Override
 			public View getView(int position, View convertView, ViewGroup parent) {
 				View item = LayoutInflater.from(activity).inflate(R.layout.grid_item, null);
-				ImageView iv = (ImageView) item.findViewById(R.id.imageView1);
+				ImageView iv = (ImageView) item.findViewById(R.id.news);
 				RelativeLayout relativeLayout = (RelativeLayout) item.findViewById(R.id.relativeLayout);
 				iv.setImageResource((data.get(position)).imageId);
 				relativeLayout.setBackgroundResource((data.get(position)).bgId);
