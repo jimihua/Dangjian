@@ -90,5 +90,8 @@
     <color name="home_small_title_color">#ff8798a3</color>
     <color name="nearby_text_color">#ffff6e37</color>
     <color name="orange_color">#ffff672f</color>
+    <color name="Color_A">#ffffffff</color>
+    <color name="Color_D">#ffa8abad</color>
+    <color name="Color_B">#fff2f2f2</color>
 
 </resources>

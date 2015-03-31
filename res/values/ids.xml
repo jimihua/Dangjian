@@ -81,5 +81,18 @@
     <item name="maogai" type="id">false</item>
     <item name="xidada" type="id">false</item>
     <item name="radioGroup" type="id">false</item>
+    <item name="home_column_two" type="id">false</item>
+    <item name="home_column_one" type="id">false</item>
+    <item name="news_layout" type="id">false</item>
+    <item name="history_layout" type="id">false</item>
+    <item name="pratice_layout" type="id">false</item>
+    <item name="game_layout" type="id">false</item>
+    <item name="xidada_layout" type="id">false</item>
+    <item name="history_title" type="id">false</item>
+    <item name="game_title" type="id">false</item>
+    <item name="makesi_title" type="id">false</item>
+    <item name="maogai_title" type="id">false</item>
+    <item name="xidada_title" type="id">false</item>
+    <item name="pratice_title" type="id">false</item>
 
 </resources>

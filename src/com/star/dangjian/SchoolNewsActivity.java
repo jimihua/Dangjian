@@ -4,6 +4,7 @@
 package com.star.dangjian;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -47,6 +48,8 @@ public class SchoolNewsActivity extends BaseActivity<News> implements IXListView
 
 	private Handler mHandler;
 
+	private int page = 1;
+
 	@Override
 	protected void onCreate(Bundle bundle) {
 		// TODO Auto-generated method stub
@@ -54,7 +57,7 @@ public class SchoolNewsActivity extends BaseActivity<News> implements IXListView
 		setContentView(R.layout.activity_schoolnews);
 		mHandler = new Handler();
 		this.mListView.setPullLoadEnable(true);
-		geneItems();
+		getItems();
 		this.mListView.setXListViewListener(this);
 		this.mListView.setDividerHeight(0);
 		this.mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -65,11 +68,11 @@ public class SchoolNewsActivity extends BaseActivity<News> implements IXListView
 		});
 	}
 
-	private void geneItems() {
+	private void getItems() {
 		this.mProgressDialog = ProgressDialog.show(this, "请稍后", "正在努力加载中...", true);
 		this.mProgressDialog.setCancelable(true);
 
-		CFinal.getFh("GBK").post(Urls.SCHOOLNEWS, new AjaxCallBack() {
+		CFinal.getFh("GBK").post(Urls.SCHOOLNEWS+page, new AjaxCallBack() {
 			public void onFailure(Throwable throwable, int param, String string) {
 				super.onFailure(throwable, param, string);
 				mProgressDialog.dismiss();
@@ -78,23 +81,33 @@ public class SchoolNewsActivity extends BaseActivity<News> implements IXListView
 			public void onSuccess(Object object) {
 				super.onSuccess(object);
 				doc = Jsoup.parse(object.toString());
+				// lists 临时的list
+				List<News> lists = new ArrayList<News>();
+				
 				Elements texts = doc.getElementsByClass("article_show");
 				for (Element element : texts) {
 					News news = new News();
 					news.setDes(element.text());
-					mList.add(news);
-
+					lists.add(news);
 				}
-
+				
 				Elements as = doc.select("a:not(.mypager,.green,[title],[href=default.aspx],[disabled=true])");
-				for (int i = 0; i < as.size(); i++) {
+				
+				if (lists.size()==as.size()&&lists.size()!=0) {
+					for (int i = 0; i < as.size(); i++) {
+						
+						lists.get(i).setTitle(as.get(i).text());
+						lists.get(i).setLink("http://www.zjnu.edu.cn/news/common/" + as.get(i).attr("href"));
 
-					mList.get(i).setTitle(as.get(i).text());
-					mList.get(i).setLink("http://www.zjnu.edu.cn/news/common/" + as.get(i).attr("href"));
-
+					}
 				}
-				mAdapter = new SchoolNewsAdapter(mContext, mList, R.layout.schollnews_item);
-				mListView.setAdapter(mAdapter);
+				
+				mList.addAll(lists);
+				if (isFirst) {
+					mAdapter = new SchoolNewsAdapter(mContext, mList, R.layout.schollnews_item);
+					mListView.setAdapter(mAdapter);
+				}
+				mAdapter.notifyDataSetChanged();
 				mProgressDialog.dismiss();
 			}
 		});
@@ -109,6 +122,8 @@ public class SchoolNewsActivity extends BaseActivity<News> implements IXListView
 	public void onLoadMore() {
 		this.mHandler.postDelayed(new Runnable() {
 			public void run() {
+				page++;
+				getItems();
 				onLoad();
 			}
 		}, 100L);
@@ -117,6 +132,11 @@ public class SchoolNewsActivity extends BaseActivity<News> implements IXListView
 	public void onRefresh() {
 		this.mHandler.postDelayed(new Runnable() {
 			public void run() {
+
+				isFirst = true;
+				page = 1;
+				mList.clear();
+				getItems();
 				onLoad();
 			}
 		}, 100L);
