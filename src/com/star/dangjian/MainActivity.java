@@ -1,21 +1,28 @@
 package com.star.dangjian;
 
+import net.tsz.afinal.FinalActivity;
 import net.tsz.afinal.annotation.view.ViewInject;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
 import com.example.games.game2048.MainGameActivity;
 import com.example.zakerdemo.R;
+import com.star.base.BaseActionActivity;
 import com.star.base.BaseActivity;
 import com.star.db.DBManager;
 import com.star.service.ActService;
 import com.star.tools.MyUtil;
 
-public class MainActivity extends BaseActivity {
+public class MainActivity extends BaseActionActivity {
 
+	private Context mContext;
 	/**
 	 * @author Kimi 新闻
 	 */
@@ -46,6 +53,7 @@ public class MainActivity extends BaseActivity {
 	@ViewInject(id = R.id.xidada_layout, click = "onClick")
 	RelativeLayout xidada_layout;
 	private DBManager dbHelper;
+
 	/*
 	 * @author Kimi
 	 */
@@ -53,7 +61,10 @@ public class MainActivity extends BaseActivity {
 	protected void onCreate(Bundle bundle) {
 		// TODO Auto-generated method stub
 		super.onCreate(bundle);
+
 		setContentView(R.layout.activity_pm_main);
+		FinalActivity.initInjectedView(this);
+		mContext = this;
 		dbHelper = new DBManager(mContext);
 		dbHelper.openDatabase();
 		dbHelper.closeDatabase();
@@ -62,8 +73,6 @@ public class MainActivity extends BaseActivity {
 		startService(service);
 	}
 
-
-
 	public void onClick(View view) {
 		switch (view.getId()) {
 		case R.id.game_layout:
@@ -71,7 +80,7 @@ public class MainActivity extends BaseActivity {
 			break;
 		case R.id.news_layout:
 			MyUtil.JumpPages(mContext, SchoolNewsActivity.class, "school");
-			//MyUtil.JumpPages(mContext, NewsActivity.class, "news");
+			// MyUtil.JumpPages(mContext, NewsActivity.class, "news");
 			break;
 		case R.id.history_layout:
 			MyUtil.JumpPages(mContext, Dangshi.class, "dangshi");
@@ -86,4 +95,5 @@ public class MainActivity extends BaseActivity {
 			break;
 		}
 	}
+
 }

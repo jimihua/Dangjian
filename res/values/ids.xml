@@ -94,5 +94,7 @@
     <item name="maogai_title" type="id">false</item>
     <item name="xidada_title" type="id">false</item>
     <item name="pratice_title" type="id">false</item>
+    <item name="school_topic" type="id">false</item>
+    <item name="back" type="id">false</item>
 
 </resources>

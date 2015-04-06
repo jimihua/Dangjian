@@ -1,0 +1,13 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <item
+        android:id="@id/back"
+        android:orderInCategory="100"
+        android:showAsAction="always"/>
+    <item
+        android:id="@id/school_topic"
+        android:title="浙师新闻"
+        android:orderInCategory="100"
+        android:showAsAction="always"/>
+
+</menu>
